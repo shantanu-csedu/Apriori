@@ -50,32 +50,6 @@ public class TransactionItem {
 		transactionItem.remove(index);
 	}
 	
-//	public void sort(FrequencyTable ft){
-//		List<FreqItem> tmp = new ArrayList<FreqItem>();
-//		for(int i=0;i<transactionItem.size();i++){
-//			int key = transactionItem.get(i);
-//			int value = ft.getHashTable().get(key);
-//			tmp.add( new FreqItem(key, value) );
-//		}
-//		
-//		Collections.sort(tmp, new Comparator<FreqItem>() {
-//
-//			@Override
-//			public int compare(FreqItem o1, FreqItem o2) {
-//				if(o1.getItemValue() == o2.getItemValue()){
-//					return o1.getItemName() - o2.getItemName();
-//				}
-//				
-//				return o2.getItemValue() - o1.getItemValue();
-//			}
-//			
-//		});
-//		for(int i=0;i<transactionItem.size();i++){
-//			int transItem = tmp.get(i).getItemName();
-//			transactionItem.set(i, transItem);
-//		}
-//	}
-	
 	public int getCount(){
 		return transactionItem.size();
 	}

@@ -30,10 +30,8 @@ public class Main {
 			// sort transaction table order by frequent item
 			ttable.print();
 			Candidate candidate = new Candidate(ttable,supportCount);
-			System.out.println("\nItem Count : 1");
-			candidate.init();
-			candidate.print();
-			int itemCount = 2;
+		
+			int itemCount = 1;
 			while( (candidate.genApriori(itemCount)) ){
 				System.out.println("\nItem Count : "  + itemCount);
 				candidate.print();
@@ -41,8 +39,6 @@ public class Main {
 			}
 			candidate.genApriori(2);
 			
-			// generate fp-tree structure
-			// calculate frequent pattern 
 			long endTime = new Date().getTime();
 			System.out.println("Support count: " + supportCount);
 			System.out.println("Execution time(including print): " + (double) ((endTime - startTime)/1000.00) + " secs");

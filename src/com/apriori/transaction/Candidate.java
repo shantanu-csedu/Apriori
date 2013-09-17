@@ -1,3 +1,9 @@
+/*
+ * Copyright (C) 2013 shantanu saha <shantanucse18@gmail.com>
+ *
+ * You can distribute, modify this project. 
+ * But you can't use it as academic project or assignment without a good amount of modification.
+ */
 package com.apriori.transaction;
 
 import java.util.ArrayList;
@@ -23,7 +29,7 @@ public class Candidate {
 		this.supportCount = supportCount;
 	}
 	
-	public void init(){ // generate 1 level candidate
+	public boolean init(){ // generate 1 level candidate
 		curItemCount = 1;
 		Hashtable<Integer, Integer> hashTable = new Hashtable<Integer,Integer>();
 		for(int i=0;i<table.getCount(); i++){
@@ -47,9 +53,14 @@ public class Candidate {
 				list.add(new CandidateItem(tItem, hashTable.get(key)));
 			}
 		}
+		if(list.size() >0) return true;
+		return false;
 	}
 	
 	public boolean genApriori(int itemCount){
+		if(itemCount == 1){
+			return init();
+		}
 		curItemCount = itemCount;
 		List<CandidateItem> tmp = new ArrayList<CandidateItem>();
 		for(int i=0;i<list.size();i++){
@@ -62,7 +73,7 @@ public class Candidate {
 		}
 		if(itemCount > 2)
 			pruning(tmp);
-		calSupportCount(tmp);
+		calculateSupportCount(tmp);
 		list = tmp; // replacing with newly generated
 		if(list.size() == 0) return false;
 		return true;
@@ -90,10 +101,9 @@ public class Candidate {
 				}
 			}
 		}
-//		return tmp;
 	}
 
-	private void calSupportCount(List<CandidateItem> tmp) {
+	private void calculateSupportCount(List<CandidateItem> tmp) {
 		for(int i=0;i<tmp.size();i++){
 			CandidateItem cItem = tmp.get(i);
 			for(int j=0;j<table.getCount();j++){

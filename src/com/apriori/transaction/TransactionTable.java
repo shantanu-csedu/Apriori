@@ -54,11 +54,4 @@ public class TransactionTable {
 		return transactionTable.get(pos);
 	}
 
-//	public void sort(FrequencyTable ftable) {
-//		for(int i=0;i<transactionTable.size();i++){
-//			TransactionItem item = transactionTable.get(i);
-//			item.sort(ftable);
-//			transactionTable.set(i, item);
-//		}
-//	}
 }
